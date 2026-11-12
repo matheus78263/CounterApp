@@ -18,10 +18,7 @@ class MainActivity : ComponentActivity() {
             CounterAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // Keep the content clear of the system bars using Scaffold's padding.
-                    CounterScreen(
-                        temporaryCount = 0,
-                        savedCount = 0,
-                        onIncrement = {},
+                    CounterRoute(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
