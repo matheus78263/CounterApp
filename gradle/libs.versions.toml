@@ -9,7 +9,8 @@ activityCompose = "1.13.0"
 kotlin = "2.2.10"
 composeBom = "2026.02.01"
 googleServices = "4.5.0"
-firebaseBom = "35.1.0"
+# Keep Firebase compatible with this project's Kotlin compiler.
+firebaseBom = "34.4.0"
 
 [libraries]
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
