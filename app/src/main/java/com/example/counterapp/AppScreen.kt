@@ -71,6 +71,20 @@ fun AppScreen(lifecycle: Lifecycle, modifier: Modifier = Modifier) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 ) { Text("Log out") }
                 CounterRoute()
+                Button(
+                    onClick = {
+                        // Run only on a click. Each function handles its own failure.
+                        checkLight(false)
+                        checkLight(true)
+                        checkNumber(-1)
+                        checkNumber(0)
+                    },
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                ) { Text("Run precondition examples") }
+                Text(
+                    "See Logcat with tag: ExceptionsDemo",
+                    modifier = Modifier.padding(16.dp)
+                )
             }
         }
     }
