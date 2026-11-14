@@ -4,6 +4,23 @@ import android.util.Log
 
 private const val EXCEPTIONS_TAG = "ExceptionsDemo"
 
+fun validateWord(word: String) {
+    if (word.length > 10) {
+        // throw raises an exception; Kotlin constructs it without the Java keyword new.
+        throw WordTooLongException(word)
+    }
+}
+
+fun demonstrateWordException(word: String) {
+    try {
+        validateWord(word)
+        Log.d(EXCEPTIONS_TAG, "Word accepted: '$word' (${word.length} characters).")
+    } catch (exception: WordTooLongException) {
+        // catch handles this specific exception so the app can continue running.
+        Log.d(EXCEPTIONS_TAG, "${exception.javaClass.simpleName}: ${exception.message}")
+    }
+}
+
 fun checkLight(isLightOn: Boolean) {
     try {
         // check validates state and throws IllegalStateException when false.

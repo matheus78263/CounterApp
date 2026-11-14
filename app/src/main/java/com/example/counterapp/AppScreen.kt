@@ -81,6 +81,15 @@ fun AppScreen(lifecycle: Lifecycle, modifier: Modifier = Modifier) {
                     },
                     modifier = Modifier.padding(horizontal = 16.dp)
                 ) { Text("Run precondition examples") }
+                Button(
+                    onClick = {
+                        // Each call handles its own exception, and runs only on a click.
+                        demonstrateWordException("hello")
+                        demonstrateWordException("abcdefghij")
+                        demonstrateWordException("programming")
+                    },
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                ) { Text("Run word exception examples") }
                 Text(
                     "See Logcat with tag: ExceptionsDemo",
                     modifier = Modifier.padding(16.dp)

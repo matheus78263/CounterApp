@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "972485575467",
+    "project_id": "counterapp-e24ae",
+    "storage_bucket": "counterapp-e24ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972485575467:android:3a446eb9f79d1234277b6e",
+        "android_client_info": {
+          "package_name": "com.example.counterapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP-xYpiRmPUlj5YO0Q_ay_OyH4oMerIyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
