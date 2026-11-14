@@ -38,6 +38,7 @@ fun checkNumber(number: Int) {
         require(number >= 0) { "The number must be non-negative: $number." }
         Log.d(EXCEPTIONS_TAG, "Number check passed: $number is non-negative.")
     } catch (exception: IllegalArgumentException) {
+        // Handle invalid arguments specifically; unrelated exceptions are not swallowed.
         Log.d(EXCEPTIONS_TAG, "${exception.javaClass.simpleName}: ${exception.message}")
     }
 }

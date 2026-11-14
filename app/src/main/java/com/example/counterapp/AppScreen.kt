@@ -1,8 +1,15 @@
 package com.example.counterapp
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -61,16 +68,24 @@ fun AppScreen(lifecycle: Lifecycle, modifier: Modifier = Modifier) {
         // Removing this branch at logout removes both counter holders and their saved state.
         // The same user's activity recreation still restores the saved counter normally.
         key(signedInUser.uid) {
-            Column(modifier) {
-                Text("Signed in as ${signedInUser.email.orEmpty()}", Modifier.padding(16.dp))
+            Column(
+                modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text("State and Exceptions", style = MaterialTheme.typography.headlineMedium)
+                Text("Signed in as ${signedInUser.email.orEmpty()}")
                 Button(
                     onClick = {
                         AuthManager.logout()
                         user = null
                     },
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) { Text("Log out") }
+                HorizontalDivider()
                 CounterRoute()
+                HorizontalDivider()
+                Text("Precondition examples", style = MaterialTheme.typography.titleLarge)
+                Text("Check light state and validate non-negative numbers.")
                 Button(
                     onClick = {
                         // Run only on a click. Each function handles its own failure.
@@ -79,8 +94,11 @@ fun AppScreen(lifecycle: Lifecycle, modifier: Modifier = Modifier) {
                         checkNumber(-1)
                         checkNumber(0)
                     },
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) { Text("Run precondition examples") }
+                HorizontalDivider()
+                Text("Custom exception examples", style = MaterialTheme.typography.titleLarge)
+                Text("Accept words up to 10 characters and handle longer words.")
                 Button(
                     onClick = {
                         // Each call handles its own exception, and runs only on a click.
@@ -88,11 +106,11 @@ fun AppScreen(lifecycle: Lifecycle, modifier: Modifier = Modifier) {
                         demonstrateWordException("abcdefghij")
                         demonstrateWordException("programming")
                     },
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) { Text("Run word exception examples") }
                 Text(
-                    "See Logcat with tag: ExceptionsDemo",
-                    modifier = Modifier.padding(16.dp)
+                    "Results for both demonstrations appear in Logcat. Filter by tag: ExceptionsDemo",
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }

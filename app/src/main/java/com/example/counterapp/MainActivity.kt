@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.counterapp.ui.theme.CounterAppTheme
@@ -20,7 +22,10 @@ class MainActivity : ComponentActivity() {
                     // Keep the content clear of the system bars using Scaffold's padding.
                     AppScreen(
                         lifecycle = lifecycle,
+                        // Consume Scaffold insets so IME padding adds only the remaining keyboard space.
                         modifier = Modifier.padding(innerPadding)
+                            .consumeWindowInsets(innerPadding)
+                            .imePadding()
                     )
                 }
             }

@@ -2,7 +2,7 @@ package com.example.counterapp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,16 +22,18 @@ fun CounterScreen(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.padding(16.dp),
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "State and Exceptions",
-            style = MaterialTheme.typography.headlineMedium
+            text = "Counters",
+            style = MaterialTheme.typography.titleLarge
         )
         Text(text = "Temporary counter: $temporaryCount")
+        Text("Uses remember: resets to zero after rotation.", style = MaterialTheme.typography.bodyMedium)
         Text(text = "Saved counter: $savedCount")
-        Button(onClick = onIncrement) {
+        Text("Uses rememberSaveable: restored after rotation.", style = MaterialTheme.typography.bodyMedium)
+        Button(onClick = onIncrement, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Increase both counters")
         }
     }
